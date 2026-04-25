@@ -1509,8 +1509,20 @@
       margin-bottom: 0;
     }
 
-    .diagnostico-callout .impacto-highlight {
+    .diagnostico-callout .impacto-highlight,
+    .diagnostico .impacto-highlight {
       color: var(--text-light);
+    }
+
+    .diagnostico .impacto-highlight-marker {
+      background-image: linear-gradient(
+        104deg,
+        rgba(140, 70, 25, 0) 0%,
+        rgba(140, 70, 25, 0.7) 8%,
+        rgba(140, 70, 25, 0.95) 24%,
+        rgba(140, 70, 25, 1) 72%,
+        rgba(140, 70, 25, 0.85) 100%
+      );
     }
 
     /* =========================================
@@ -1609,6 +1621,45 @@
       font-style: italic;
       color: var(--beige);
       letter-spacing: -0.04em;
+    }
+
+    /* =========================================
+       BLOCO 03: PROBLEMATIZAÇÃO + SOLUÇÃO (fusão)
+       ========================================= */
+    .problema-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 28px;
+      color: rgba(245, 240, 235, 0.65);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+    }
+
+    .problema-eyebrow::before {
+      content: "";
+      width: 38px;
+      height: 1px;
+      border-radius: 999px;
+      background: var(--beige);
+      opacity: 0.5;
+    }
+
+    .problema-impacto {
+      font-size: clamp(20px, 2.2vw, 26px) !important;
+      font-weight: 600 !important;
+      color: var(--text-light) !important;
+      line-height: 1.4 !important;
+    }
+
+    .problema-titulo {
+      margin-top: 64px;
+    }
+
+    .problema-solucao-intro {
+      margin-top: 52px;
     }
 
     .section-title {
@@ -1790,6 +1841,16 @@
       font-weight: 600;
       color: var(--dark) !important;
       font-style: italic;
+    }
+
+    .pilar-mantra {
+      font-family: 'Urbanist', sans-serif;
+      font-size: clamp(20px, 2vw, 24px);
+      font-weight: 800;
+      color: var(--olive);
+      letter-spacing: -0.02em;
+      margin: 0 0 16px;
+      line-height: 1.1;
     }
 
     .pilar-mockup {
@@ -2493,6 +2554,15 @@
       font-weight: 600;
       color: var(--text-light);
       letter-spacing: -0.06em;
+    }
+
+    .pessoal-ponte {
+      margin: 28px 0 0;
+      font-size: 18px;
+      line-height: 1.5;
+      font-weight: 500;
+      color: var(--text-light);
+      letter-spacing: -0.02em;
     }
 
     .pessoal-metricas {
@@ -4449,384 +4519,59 @@
   </section>
 
   <!-- ========================================
-       BLOCO 03: MAPA DE JORNADA
+       BLOCO 03: PROBLEMATIZAÇÃO + SOLUÇÃO
        ======================================== -->
-  <section class="jornada-mapa" aria-label="Mapa de jornada para sair da confusão financeira">
-    <!-- Background decorativo com SVGs financeiros flutuantes -->
-    <div class="jornada-float-layer" aria-hidden="true">
-      <div class="jornada-float-item jornada-float-coin">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" stroke-width="2.2">
-          <circle cx="32" cy="32" r="20"/>
-          <path d="M32 20v24M39 26c-1.2-2.5-4.1-4.2-7.5-4.2-4.2 0-7.5 2.3-7.5 5.6 0 7.2 15 3.7 15 10.8 0 3.3-3.3 5.6-7.5 5.6-3.8 0-6.9-1.8-8-4.6"/>
-        </svg>
-      </div>
+  <section class="diagnostico" id="problema">
 
-      <div class="jornada-float-item jornada-float-chart">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" stroke-width="2.2">
-          <path d="M14 48h36M20 44V31M32 44V22M44 44V16"/>
-          <path d="m18 28 10-8 8 6 12-14"/>
-        </svg>
-      </div>
-
-      <div class="jornada-float-item jornada-float-pig">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" stroke-width="2.2">
-          <path d="M20 38c-4.5-1.2-7.5-4.7-7.5-9 0-6.8 7-12 18-12 7.2 0 12.6 2.1 15.8 5.5H51c2.2 0 4 1.8 4 4V33c0 2.2-1.8 4-4 4h-3.8c-1.3 2.1-3.2 3.9-5.7 5.2V48h-7v-3.8a31 31 0 0 1-8 0V48h-7V38Z"/>
-          <path d="M24 25h10M42 28h.01M10 29h-3"/>
-        </svg>
-      </div>
-
-      <div class="jornada-float-item jornada-float-wallet">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" stroke-width="2.2">
-          <rect x="12" y="18" width="40" height="30" rx="6"/>
-          <path d="M44 30h8v10h-8c-2.8 0-5-2.2-5-5s2.2-5 5-5Z"/>
-          <path d="M18 24h20"/>
-        </svg>
-      </div>
-
-      <div class="jornada-float-item jornada-float-safe">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" stroke-width="2.2">
-          <rect x="14" y="12" width="36" height="40" rx="6"/>
-          <circle cx="32" cy="32" r="9"/>
-          <path d="M32 23v18M23 32h18M44 18h.01M44 46h.01M20 18h.01M20 46h.01"/>
-        </svg>
-      </div>
-
-      <div class="jornada-float-item jornada-float-card">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" stroke-width="2.2">
-          <rect x="10" y="18" width="44" height="28" rx="6"/>
-          <path d="M10 26h44M18 38h10M34 38h8"/>
-        </svg>
-      </div>
-
-      <div class="jornada-float-item jornada-float-percent">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" stroke-width="2.2">
-          <circle cx="22" cy="22" r="7"/>
-          <circle cx="42" cy="42" r="7"/>
-          <path d="M44 16 20 48"/>
-        </svg>
-      </div>
-
-      <div class="jornada-float-item jornada-float-receipt">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" stroke-width="2.2">
-          <path d="M18 12h28v40l-4-3-4 3-4-3-4 3-4-3-4 3-4-3-4 3V12Z"/>
-          <path d="M24 24h16M24 32h16M24 40h10"/>
-        </svg>
-      </div>
-
-      <div class="jornada-float-item jornada-float-bank">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" stroke-width="2.2">
-          <path d="M10 24 32 12l22 12"/>
-          <path d="M14 24h36v24H14zM20 24v24M32 24v24M44 24v24M10 48h44"/>
-        </svg>
-      </div>
-
-      <div class="jornada-float-item jornada-float-target">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" stroke-width="2.2">
-          <circle cx="32" cy="32" r="18"/>
-          <circle cx="32" cy="32" r="9"/>
-          <path d="M32 14v8M50 32h-8M32 50v-8M14 32h8"/>
-        </svg>
-      </div>
-
-      <div class="jornada-float-item jornada-float-transfer">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" stroke-width="2.2">
-          <path d="M18 24h28M38 16l8 8-8 8M46 40H18M26 48l-8-8 8-8"/>
-        </svg>
-      </div>
-
-      <div class="jornada-float-item jornada-float-shield">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" stroke-width="2.2">
-          <path d="M32 12 18 18v12c0 10 6.2 17.4 14 21 7.8-3.6 14-11 14-21V18l-14-6Z"/>
-          <path d="m24 32 5 5 11-12"/>
-        </svg>
-      </div>
-    </div>
-
-    <div class="jornada-shell">
-      <!-- Cabeçalho da jornada -->
-      <header class="jornada-header scroll-reveal" style="--reveal-delay: 0ms;">
-        <p class="jornada-kicker">Mapa de jornada</p>
-        <h2 class="section-title jornada-title">Como você sai do <em class="title-mark title-mark-dark">“não sei pra onde vai meu dinheiro”</em> pra clareza total</h2>
-      </header>
-
-      <!-- Board visual em timeline vertical -->
-      <div class="jornada-board">
-        <div class="jornada-timeline">
-          <!-- Etapa 0: início da jornada -->
-          <article class="jornada-step jornada-step-left scroll-reveal" style="--reveal-delay: 80ms;">
-            <div class="jornada-step-card">
-              <div class="jornada-inicio-box">
-                <p class="jornada-etiqueta">Hoje</p>
-                <h3 class="jornada-titulo">Você ganha bem, mas não sabe pra onde o dinheiro vai</h3>
-                <ul class="jornada-dor">
-                  <li class="jornada-dor-item">
-                    <span class="jornada-dor-icone" aria-hidden="true">
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m0 0-4-4m4 4 4-4"/>
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 20.25a8.25 8.25 0 1 0 0-16.5 8.25 8.25 0 0 0 0 16.5Z"/>
-                      </svg>
-                    </span>
-                    Dinheiro some sem explicação
-                  </li>
-                  <li class="jornada-dor-item">
-                    <span class="jornada-dor-icone" aria-hidden="true">
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126Z"/>
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 15.75h.007v.008H12v-.008Z"/>
-                      </svg>
-                    </span>
-                    Ansiedade toda vez que olha o saldo
-                  </li>
-                  <li class="jornada-dor-item">
-                    <span class="jornada-dor-icone" aria-hidden="true">
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z"/>
-                      </svg>
-                    </span>
-                    Não sabe quanto pode gastar sem estourar
-                  </li>
-                  <li class="jornada-dor-item">
-                    <span class="jornada-dor-icone" aria-hidden="true">
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"/>
-                      </svg>
-                    </span>
-                    Fim de mês sempre igual: no zero de novo
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="jornada-node" aria-hidden="true">
-              <svg class="jornada-node-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7"/>
-              </svg>
-              <svg class="jornada-node-check" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.4">
-                <path stroke-linecap="round" stroke-linejoin="round" d="m5 12.5 4.3 4.3L19 7.5"/>
-              </svg>
-            </div>
-          </article>
-
-          <!-- Etapa 1: organizar -->
-          <article class="jornada-step jornada-step-right scroll-reveal" style="--reveal-delay: 180ms;">
-            <div class="jornada-node" aria-hidden="true">
-              <svg class="jornada-node-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M8 6.75h8M8 10.75h8M8 14.75h5"/>
-                <path stroke-linecap="round" stroke-linejoin="round" d="M7.25 3.75h9.5A2.25 2.25 0 0 1 19 6v12A2.25 2.25 0 0 1 16.75 20.25h-9.5A2.25 2.25 0 0 1 5 18V6A2.25 2.25 0 0 1 7.25 3.75Z"/>
-              </svg>
-              <svg class="jornada-node-check" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.4">
-                <path stroke-linecap="round" stroke-linejoin="round" d="m5 12.5 4.3 4.3L19 7.5"/>
-              </svg>
-            </div>
-
-            <div class="jornada-step-card">
-              <div class="jornada-card" data-journey-card tabindex="0" role="button" aria-pressed="false">
-                <div class="jornada-card-header">
-                  <div class="jornada-icon" aria-hidden="true">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M8 6.75h8M8 10.75h8M8 14.75h5"/>
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M7.25 3.75h9.5A2.25 2.25 0 0 1 19 6v12A2.25 2.25 0 0 1 16.75 20.25h-9.5A2.25 2.25 0 0 1 5 18V6A2.25 2.25 0 0 1 7.25 3.75Z"/>
-                    </svg>
-                  </div>
-                  <p class="jornada-etiqueta jornada-etiqueta-luz">Parada 01</p>
-                </div>
-                <h3 class="jornada-titulo">Você organiza seus números</h3>
-                <p class="jornada-texto">Junta extratos, cartões e entradas num só lugar, sem depender de fórmula difícil.</p>
-                <p class="jornada-impacto">A promessa aqui é simplicidade: você para de se sentir perdida e começa a ter um painel único da sua vida financeira.</p>
-              </div>
-            </div>
-          </article>
-
-          <!-- Etapa 2: diagnóstico com Clara -->
-          <article class="jornada-step jornada-step-left scroll-reveal" style="--reveal-delay: 280ms;">
-            <div class="jornada-step-card">
-              <div class="jornada-card" data-journey-card tabindex="0" role="button" aria-pressed="false">
-                <div class="jornada-card-header">
-                  <div class="jornada-icon" aria-hidden="true">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="m15.75 15.75 3.5 3.5M10.75 17.25a6.5 6.5 0 1 0 0-13 6.5 6.5 0 0 0 0 13Z"/>
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M8.5 11.25h4.5M10.75 9v4.5"/>
-                    </svg>
-                  </div>
-                  <p class="jornada-etiqueta jornada-etiqueta-luz">Parada 02</p>
-                </div>
-                <h3 class="jornada-titulo">Você entende o que está acontecendo</h3>
-                <p class="jornada-texto">A Clara analisa seus dados e aponta onde o dinheiro está escapando sem você perceber.</p>
-                <p class="jornada-impacto">Aqui entra a virada emocional: sai culpa difusa, entra diagnóstico claro do que precisa ser corrigido.</p>
-              </div>
-            </div>
-
-            <div class="jornada-node" aria-hidden="true">
-              <svg class="jornada-node-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8">
-                <path stroke-linecap="round" stroke-linejoin="round" d="m15.75 15.75 3.5 3.5M10.75 17.25a6.5 6.5 0 1 0 0-13 6.5 6.5 0 0 0 0 13Z"/>
-                <path stroke-linecap="round" stroke-linejoin="round" d="M8.5 11.25h4.5M10.75 9v4.5"/>
-              </svg>
-              <svg class="jornada-node-check" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.4">
-                <path stroke-linecap="round" stroke-linejoin="round" d="m5 12.5 4.3 4.3L19 7.5"/>
-              </svg>
-            </div>
-          </article>
-
-          <!-- Etapa 3: plano financeiro -->
-          <article class="jornada-step jornada-step-right scroll-reveal" style="--reveal-delay: 380ms;">
-            <div class="jornada-node" aria-hidden="true">
-              <svg class="jornada-node-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M4 19.25h16M6.75 16.75V11.5M12 16.75V8.75M17.25 16.75V5.25"/>
-                <path stroke-linecap="round" stroke-linejoin="round" d="m5.5 8.75 3-3 3 2 6-4"/>
-              </svg>
-              <svg class="jornada-node-check" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.4">
-                <path stroke-linecap="round" stroke-linejoin="round" d="m5 12.5 4.3 4.3L19 7.5"/>
-              </svg>
-            </div>
-
-            <div class="jornada-step-card">
-              <div class="jornada-card" data-journey-card tabindex="0" role="button" aria-pressed="false">
-                <div class="jornada-card-header">
-                  <div class="jornada-icon" aria-hidden="true">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M4 19.25h16M6.75 16.75V11.5M12 16.75V8.75M17.25 16.75V5.25"/>
-                      <path stroke-linecap="round" stroke-linejoin="round" d="m5.5 8.75 3-3 3 2 6-4"/>
-                    </svg>
-                  </div>
-                  <p class="jornada-etiqueta jornada-etiqueta-luz">Parada 03</p>
-                </div>
-                <h3 class="jornada-titulo">Você cria um plano que faz sentido</h3>
-                <p class="jornada-texto">Com base na sua renda, rotina e prioridades, não em regra genérica que não cabe na vida real.</p>
-                <p class="jornada-impacto">Essa etapa te entrega segurança: você deixa de seguir dica solta e passa a ter um plano que sustenta decisão.</p>
-              </div>
-            </div>
-          </article>
-
-          <!-- Etapa 4: ajustes semanais -->
-          <article class="jornada-step jornada-step-left scroll-reveal" style="--reveal-delay: 480ms;">
-            <div class="jornada-step-card">
-              <div class="jornada-card" data-journey-card tabindex="0" role="button" aria-pressed="false">
-                <div class="jornada-card-header">
-                  <div class="jornada-icon" aria-hidden="true">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M6 7.25h12M8.5 12h7M10.25 16.75h3.5"/>
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 3.75h9A2.25 2.25 0 0 1 18.75 6v12A2.25 2.25 0 0 1 16.5 20.25h-9A2.25 2.25 0 0 1 5.25 18V6A2.25 2.25 0 0 1 7.5 3.75Z"/>
-                    </svg>
-                  </div>
-                  <p class="jornada-etiqueta jornada-etiqueta-luz">Parada 04</p>
-                </div>
-                <h3 class="jornada-titulo">Você ajusta ao longo do mês</h3>
-                <p class="jornada-texto">Em 30 minutos por semana, revisa a rota, corrige excessos e sabe quanto ainda pode gastar.</p>
-                <p class="jornada-impacto">É aqui que o método vira rotina leve: não é controle exaustivo, é direção prática para o dinheiro sobrar.</p>
-              </div>
-            </div>
-
-            <div class="jornada-node" aria-hidden="true">
-              <svg class="jornada-node-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M6 7.25h12M8.5 12h7M10.25 16.75h3.5"/>
-                <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 3.75h9A2.25 2.25 0 0 1 18.75 6v12A2.25 2.25 0 0 1 16.5 20.25h-9A2.25 2.25 0 0 1 5.25 18V6A2.25 2.25 0 0 1 7.5 3.75Z"/>
-              </svg>
-              <svg class="jornada-node-check" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.4">
-                <path stroke-linecap="round" stroke-linejoin="round" d="m5 12.5 4.3 4.3L19 7.5"/>
-              </svg>
-            </div>
-          </article>
-
-          <!-- Etapa final: transformação e CTA -->
-          <article class="jornada-step jornada-step-right jornada-step-final scroll-reveal" style="--reveal-delay: 580ms;">
-            <div class="jornada-node" aria-hidden="true">
-              <svg class="jornada-node-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m0 0 5-5m-5 5-5-5"/>
-              </svg>
-              <svg class="jornada-node-check" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.4">
-                <path stroke-linecap="round" stroke-linejoin="round" d="m5 12.5 4.3 4.3L19 7.5"/>
-              </svg>
-            </div>
-
-            <div class="jornada-chegada-box">
-              <p class="jornada-etiqueta">Chegada</p>
-              <h3 class="jornada-titulo">Clareza total para fazer o dinheiro sobrar</h3>
-              <ul class="jornada-beneficios">
-                <li class="jornada-beneficio">
-                  <span class="jornada-beneficio-icone" aria-hidden="true">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m3-8.25c-.35-.9-1.38-1.5-2.65-1.5-1.57 0-2.85.86-2.85 2.1 0 2.8 5.7 1.5 5.7 4.45 0 1.24-1.28 2.1-2.85 2.1-1.37 0-2.48-.65-2.82-1.6"/>
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 20.25a8.25 8.25 0 1 0 0-16.5 8.25 8.25 0 0 0 0 16.5Z"/>
-                    </svg>
-                  </span>
-                  Dinheiro começa a sobrar
-                </li>
-                <li class="jornada-beneficio">
-                  <span class="jornada-beneficio-icone" aria-hidden="true">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M9 9.5a3 3 0 1 1 6 0c0 1.3-.72 2.15-1.6 2.85-.64.5-1.03 1.03-1.15 1.9"/>
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 17h.01M4.75 12a7.25 7.25 0 1 1 14.5 0 7.25 7.25 0 0 1-14.5 0Z"/>
-                    </svg>
-                  </span>
-                  Mais controle e menos ansiedade
-                </li>
-                <li class="jornada-beneficio">
-                  <span class="jornada-beneficio-icone" aria-hidden="true">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M4 19h16M6.5 16.5V11M12 16.5V8M17.5 16.5V5.5"/>
-                    </svg>
-                  </span>
-                  Decisões com segurança
-                </li>
-                <li class="jornada-beneficio">
-                  <span class="jornada-beneficio-icone" aria-hidden="true">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M4.75 9.75 12 4.75l7.25 5v9.5H4.75v-9.5Z"/>
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M9.25 19.25v-6h5.5v6"/>
-                    </svg>
-                  </span>
-                  Construção de reserva e estabilidade
-                </li>
-              </ul>
-              <a href="#preco" class="btn-principal jornada-cta-link">
-                Quero chegar nesse resultado
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
-              </a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========================================
-       BLOCO 04: PROVA VISUAL — OLHA COMO FUNCIONA NA PRÁTICA
-       ======================================== -->
-  <section class="prova-visual" id="pratica">
-
-    <!-- Sparkles decorativos -->
-    <div class="sparkle sparkle-beige" style="top: 6%; left: 10%; width: 50px; height: 50px;">
+    <div class="sparkle" style="top: 6%; right: 8%; width: 55px; height: 55px;">
       <svg viewBox="0 0 100 100"><path d="M50 0 C52 40, 60 48, 100 50 C60 52, 52 60, 50 100 C48 60, 40 52, 0 50 C40 48, 48 40, 50 0Z"/></svg>
     </div>
-    <div class="sparkle sparkle-beige" style="bottom: 10%; right: 8%; width: 65px; height: 65px;">
+    <div class="sparkle" style="bottom: 12%; left: 5%; width: 65px; height: 65px;">
       <svg viewBox="0 0 100 100"><path d="M50 0 C52 40, 60 48, 100 50 C60 52, 52 60, 50 100 C48 60, 40 52, 0 50 C40 48, 48 40, 50 0Z"/></svg>
     </div>
 
-    <div class="container">
-      <h2 class="section-title section-title-light">Olha como funciona <em class="title-mark title-mark-light">na prática</em></h2>
+    <div class="container-narrow">
 
-      <div class="visual-grid">
-        <div class="visual-card">
-          <div class="visual-video-frame">
-            <video
-              class="visual-phone-video"
-              autoplay
-              muted
-              loop
-              playsinline
-              preload="auto"
-              aria-label="Demonstração prática do Caixa Livre no celular"
-            >
-              <source src="stories-iphone-v2.webm" type="video/webm">
-            <source src="stories-iphone-v2-hevc.mov" type="video/quicktime; codecs=hvc1">
-            </video>
-          </div>
-          <div class="visual-info">
-            <span class="visual-label">Demonstração real no celular</span>
-            <h3>Copiar. Colar. Pronto.</h3>
-            <p class="visual-copy">Em menos de 5 minutos você tem o panorama completo do mês: quanto entrou, quanto saiu, em quê e quanto ainda pode gastar com clareza.</p>
-          </div>
+      <!-- Ativação: você se reconhece -->
+      <p class="problema-eyebrow scroll-reveal">Talvez você se reconheça aqui</p>
+
+      <p class="scroll-reveal problema-impacto">Você trabalha. Se esforça. Faz hora extra, aceita projeto, corre atrás. O dinheiro cai na conta e, <span class="impacto-highlight impacto-highlight-marker" style="--highlight-delay: 320ms;">duas semanas depois</span>, você já não sabe onde foi.</p>
+
+      <p class="scroll-reveal">Aí vem aquela sensação: você só trabalha pra pagar conta e recomeçar do zero todo mês. <span class="destaque-light">Nunca sobra.</span> E todo mundo parece conseguir viajar, investir, guardar dinheiro, menos você.</p>
+
+      <p class="scroll-reveal">Talvez você já tenha tentado se organizar. Baixou um app, abriu uma planilha, anotou gasto por 3 dias. E largou. Porque era chato, demorado, e <span class="destaque-light">você não sabia nem o que fazer com aqueles números.</span></p>
+
+      <!-- Diagnóstico -->
+      <h2 class="section-title section-title-light scroll-reveal problema-titulo">O problema nunca foi <em class="title-mark title-mark-light">o quanto você ganha.</em></h2>
+
+      <p class="scroll-reveal">Atendendo <span class="destaque-light">mais de 500 clientes</span> em consultoria, eu vi sempre o mesmo padrão: a maioria ganha bem. Tem salário bom, renda crescente, às vezes mais de uma fonte de renda.</p>
+
+      <div class="diagnostico-callout scroll-reveal">
+        <p><span class="destaque-light">E mesmo assim, não sobra.</span> Porque o problema <span class="impacto-highlight impacto-highlight-marker" style="--highlight-delay: 180ms;">não é renda. É visibilidade.</span></p>
+      </div>
+
+      <p class="scroll-reveal">Sem visibilidade, você não decide. Você chuta. <span class="destaque-light">E dinheiro não perdoa chute.</span></p>
+
+      <!-- Solução: 3 coisas -->
+      <p class="scroll-reveal problema-impacto problema-solucao-intro">Você precisa de um sistema simples que te mostre 3 coisas:</p>
+
+      <div class="solucao-lista">
+        <div class="solucao-item scroll-reveal" style="--reveal-delay: 0ms;">
+          <span class="solucao-item-num">01</span>
+          <span class="solucao-item-text">Pra onde seu dinheiro está indo</span>
         </div>
+        <div class="solucao-item scroll-reveal" style="--reveal-delay: 100ms;">
+          <span class="solucao-item-num">02</span>
+          <span class="solucao-item-text">Quanto você pode gastar sem culpa</span>
+        </div>
+        <div class="solucao-item scroll-reveal" style="--reveal-delay: 200ms;">
+          <span class="solucao-item-num">03</span>
+          <span class="solucao-item-text">O que fazer pra começar a sobrar</span>
+        </div>
+      </div>
+
+      <div class="solucao-ancora scroll-reveal">
+        <p>E é exatamente isso que o Caixa Livre faz.</p>
       </div>
     </div>
   </section>
@@ -4834,7 +4579,7 @@
   <div class="section-divider"></div>
 
   <!-- ========================================
-       BLOCO 05A: COMO O CAIXA LIVRE FUNCIONA
+       BLOCO 04: COMO O CAIXA LIVRE FUNCIONA
        ======================================== -->
   <section class="pilares" id="como-funciona">
 
@@ -4855,8 +4600,9 @@
         <div class="pilar-texto">
           <span class="pilar-num">01</span>
           <h3 class="pilar-titulo">Você finalmente entende seu dinheiro, sem virar refém de planilha</h3>
+          <p class="pilar-mantra">Copiar. Colar. Pronto.</p>
           <p>Você copia o extrato do seu banco, cola na planilha, e ela organiza tudo sozinha: categoriza seus gastos, calcula quanto sobrou, mostra gráficos e te avisa quando você está saindo do planejamento.</p>
-          <p class="pilar-destaque">É literalmente copiar e colar. A planilha faz o resto.</p>
+          <p class="pilar-destaque">Se você já tentou planilha antes e desistiu, eu entendo. A diferença aqui é que você não está sozinha tentando decifrar uma planilha muda — tem aulas que te guiam, a Clara que analisa seus números e uma rotina que cabe na sua vida real.</p>
         </div>
         <div class="pilar-window">
           <div class="pilar-window-topbar" aria-hidden="true">
@@ -4902,20 +4648,10 @@
     </div>
   </section>
 
-  <!-- BLOCO 05B: OBJEÇÃO — REFORÇO DA DIFERENÇA DO MÉTODO -->
-  <section class="objecao">
-    <div class="container">
-      <div class="objecao-box">
-        <p class="objecao-titulo">"Mas eu já tentei planilha e desisti..."</p>
-        <p>Eu sei. A diferença é que aqui você não está sozinha tentando decifrar uma planilha muda. Você tem aulas que te guiam passo a passo, a Clara que analisa seus números e te mostra o que ajustar, e uma rotina que cabe na sua vida real.</p>
-      </div>
-    </div>
-  </section>
-
   <div class="section-divider"></div>
 
   <!-- ========================================
-       BLOCO 06: LETÍCIA KRATKA — QUEM ESTÁ POR TRÁS DO MÉTODO
+       BLOCO 05: LETÍCIA KRATKA
        ======================================== -->
   <section class="prova-pessoal" id="quem">
 
@@ -4961,6 +4697,7 @@
             <p>Não é teoria genérica nem discurso de “corta o cafezinho”. <span class="pessoal-highlight-verde">É método prático, testado em consultoria, agora colocado na sua mão.</span></p>
           </div>
 
+          <p class="pessoal-ponte">E não fica no papel: são <span class="pessoal-highlight-verde">mais de 3.000 pessoas</span> que já viram isso funcionar.</p>
 
         </div>
       </div>
@@ -4970,125 +4707,7 @@
   <div class="section-divider"></div>
 
   <!-- ========================================
-       BLOCO 07A: ATIVAÇÃO — O PROBLEMA
-       ======================================== -->
-  <section class="ativacao ativacao-impacto">
-
-    <div class="sparkle" style="top: 5%; right: 10%; width: 50px; height: 50px;">
-      <svg viewBox="0 0 100 100"><path d="M50 0 C52 40, 60 48, 100 50 C60 52, 52 60, 50 100 C48 60, 40 52, 0 50 C40 48, 48 40, 50 0Z"/></svg>
-    </div>
-
-    <div class="container-narrow">
-      <div class="ativacao-impacto-shell scroll-reveal">
-        <!-- Marcador editorial da dor principal -->
-        <p class="ativacao-impacto-tag">Depois da consciência, vem o incômodo</p>
-
-        <!-- Texto trabalhado com contraste de peso, pausas e highlight contextual -->
-        <div class="ativacao-impacto-copy">
-          <p><span class="impacto-strong">Você trabalha.</span> <span class="impacto-soft">Se esforça.</span> <span class="impacto-strong">Faz hora extra</span>, aceita projeto, <span class="impacto-highlight impacto-highlight-marker" style="--highlight-delay: 620ms;">corre atrás.</span></p>
-
-          <p>O dinheiro cai na conta e, <span class="impacto-highlight impacto-highlight-marker" style="--highlight-delay: 1320ms;">duas semanas depois</span>, você já não sabe onde foi.</p>
-
-          <p>Você olha o saldo e pensa:<br><span class="impacto-quote">"mas eu nem comprei nada absurdo esse mês"</span></p>
-
-          <p class="impacto-final">Aí vem aquela sensação. De que você <span class="impacto-strong">só trabalha pra pagar conta</span> e recomeçar do zero todo mês. De que <span class="impacto-highlight impacto-highlight-marker" style="--highlight-delay: 1820ms;">nunca sobra</span>. De que todo mundo parece conseguir viajar, investir, guardar dinheiro, <span class="impacto-soft">menos você.</span></p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Respiro visual -->
-  <div class="respiro">
-    <p>E aí você promete que <em>"no mês que vem eu começo de verdade".</em></p>
-  </div>
-
-  <!-- ========================================
-       BLOCO 07B: ATIVAÇÃO — A TENTATIVA FRUSTRADA
-       ======================================== -->
-  <section class="ativacao ativacao-frustrada">
-
-    <div class="sparkle" style="bottom: 15%; left: 5%; width: 65px; height: 65px;">
-      <svg viewBox="0 0 100 100"><path d="M50 0 C52 40, 60 48, 100 50 C60 52, 52 60, 50 100 C48 60, 40 52, 0 50 C40 48, 48 40, 50 0Z"/></svg>
-    </div>
-
-    <div class="container-narrow">
-      <div class="ativacao-frustrada-shell scroll-reveal">
-        <p>Talvez você já tenha tentado se organizar. Baixou um app, abriu uma planilha, anotou gasto por 3 dias. E largou. Porque era chato, demorado, e no fundo <span class="impacto-highlight impacto-highlight-marker" style="--highlight-delay: 420ms;">você não sabia nem o que fazer com aqueles números.</span></p>
-
-        <div class="frase-ancora-box">
-          <p>Eu sei. Porque já ouvi isso de mais de 500 pessoas. E o padrão é sempre o mesmo.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="section-divider"></div>
-
-  <!-- ========================================
-       BLOCO 08A: DIAGNÓSTICO
-       ======================================== -->
-  <section class="diagnostico" id="problema">
-
-    <div class="sparkle sparkle-beige" style="top: 10%; right: 6%; width: 70px; height: 70px;">
-      <svg viewBox="0 0 100 100"><path d="M50 0 C52 40, 60 48, 100 50 C60 52, 52 60, 50 100 C48 60, 40 52, 0 50 C40 48, 48 40, 50 0Z"/></svg>
-    </div>
-
-    <div class="container-narrow">
-      <h2 class="section-title section-title-light scroll-reveal">O problema nunca foi <span class="destaque-light">o quanto você</span> <em class="title-mark title-mark-light">ganha.</em></h2>
-
-      <p class="scroll-reveal">Deixa eu te contar uma coisa que eu aprendi atendendo <span class="destaque-light">mais de 500 clientes</span> em consultoria financeira:</p>
-
-      <p class="scroll-reveal">Quase ninguém que me procura ganha pouco. <span class="destaque-light">A maioria ganha bem.</span> Tem salário bom, renda crescente, às vezes até mais de uma fonte de renda.</p>
-
-      <div class="diagnostico-callout scroll-reveal">
-        <p><span class="destaque-light">E mesmo assim, não sobra.</span> Porque o problema <span class="impacto-highlight impacto-highlight-marker" style="--highlight-delay: 180ms;">não é renda. É visibilidade.</span></p>
-      </div>
-
-      <p class="scroll-reveal">Você acha que o problema é gastar demais. Mas na real, <span class="destaque-light">você nem sabe o que está acontecendo com o seu dinheiro.</span> Não sabe quanto do seu salário já está comprometido. Não sabe quanto pode gastar por semana sem estourar o mês. Não sabe se aquele parcelamento novo cabe ou não.</p>
-
-      <p class="scroll-reveal">Sem visibilidade, você não decide. Você chuta. <span class="destaque-light">E dinheiro não perdoa chute.</span></p>
-    </div>
-  </section>
-
-  <!-- ========================================
-       BLOCO 08B: SOLUÇÃO — 3 COISAS
-       ======================================== -->
-  <section class="solucao">
-
-    <div class="sparkle sparkle-beige" style="bottom: 12%; left: 4%; width: 55px; height: 55px;">
-      <svg viewBox="0 0 100 100"><path d="M50 0 C52 40, 60 48, 100 50 C60 52, 52 60, 50 100 C48 60, 40 52, 0 50 C40 48, 48 40, 50 0Z"/></svg>
-    </div>
-
-    <div class="container-narrow">
-      <p class="scroll-reveal">O que você precisa não é de mais disciplina, mais força de vontade ou mais renda.</p>
-
-      <p class="frase-destaque scroll-reveal">Você precisa de um sistema simples que te mostre 3 coisas:</p>
-
-      <div class="solucao-lista">
-        <div class="solucao-item scroll-reveal" style="--reveal-delay: 0ms;">
-          <span class="solucao-item-num">01</span>
-          <span class="solucao-item-text">Pra onde seu dinheiro está indo</span>
-        </div>
-        <div class="solucao-item scroll-reveal" style="--reveal-delay: 100ms;">
-          <span class="solucao-item-num">02</span>
-          <span class="solucao-item-text">Quanto você pode gastar sem culpa</span>
-        </div>
-        <div class="solucao-item scroll-reveal" style="--reveal-delay: 200ms;">
-          <span class="solucao-item-num">03</span>
-          <span class="solucao-item-text">O que fazer pra começar a sobrar</span>
-        </div>
-      </div>
-
-      <div class="solucao-ancora scroll-reveal">
-        <p>E é exatamente isso que o Caixa Livre faz.</p>
-      </div>
-    </div>
-  </section>
-
-  <div class="section-divider"></div>
-
-  <!-- ========================================
-       BLOCO 09: PROVA SOCIAL — RESULTADOS
+       BLOCO 06: PROVA SOCIAL — DEPOIMENTOS
        ======================================== -->
   <section class="prova-social" id="resultados">
 
@@ -5166,7 +4785,7 @@
   <div class="section-divider"></div>
 
   <!-- ========================================
-       BLOCO 10: ENTREGÁVEIS
+       BLOCO 07: ENTREGÁVEIS
        ======================================== -->
   <section class="entregaveis" id="entregaveis">
 
@@ -5198,7 +4817,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15.91 11.672a.375.375 0 010 .656l-5.603 3.113a.375.375 0 01-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112z"/></svg>
           </div>
           <h3>11 aulas gravadas</h3>
-          <p>Passo a passo direto ao ponto. Cada aula te ensina uma etapa, desde alimentar a planilha até criar seu planejamento.</p>
+          <p>Uma sequência de 11 aulas com passo a passo do primeiro acesso até a rotina com a Clara. Você sabe exatamente o que assistir, em qual ordem e o que fazer depois.</p>
         </div>
 
         <!-- Clara -->
@@ -5244,225 +4863,7 @@
   <div class="section-divider"></div>
 
   <!-- ========================================
-       BLOCO 11: CARROSSEL DE AULAS
-       ======================================== -->
-  <section class="aulas-carousel-section scroll-reveal" aria-label="Trilha de aulas do Caixa Livre 2.0">
-    <div class="aulas-carousel-head container">
-      <h2 class="section-title" style="text-align: center;">Uma sequência de aulas pra <em class="title-mark title-mark-dark">virar a chave</em> do seu dinheiro</h2>
-      <p class="aulas-carousel-subtitle">Do primeiro contato com a ferramenta até a rotina com a Clara: você sabe exatamente o que assistir, em qual ordem e o que fazer depois.</p>
-    </div>
-
-    <div class="aulas-carousel-shell">
-      <div class="aulas-carousel-track" data-aulas-track tabindex="0" aria-label="Carrossel horizontal de aulas">
-
-        <!-- Card 01 -->
-        <article class="aula-card" tabindex="0" style="--aula-bg: url('aula-1-opt.jpg')">
-          <div class="aula-card-inner">
-            <div class="aula-card-topline">
-              <span class="aula-card-tag">Etapa 01</span>
-              <span class="aula-card-arrow" aria-hidden="true">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
-              </span>
-            </div>
-            <div class="aula-card-copy">
-              <h3 class="aula-card-title">Boas-vindas ao curso</h3>
-              <p class="aula-card-meta">Comece com contexto e direção</p>
-            </div>
-          </div>
-        </article>
-
-        <!-- Card 02 -->
-        <article class="aula-card" tabindex="0" style="--aula-bg: url('aula-1-opt.jpg')">
-          <div class="aula-card-inner">
-            <div class="aula-card-topline">
-              <span class="aula-card-tag">Etapa 02</span>
-              <span class="aula-card-arrow" aria-hidden="true">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
-              </span>
-            </div>
-            <div class="aula-card-copy">
-              <h3 class="aula-card-title">Como esse método vai transformar sua forma de lidar com dinheiro</h3>
-              <p class="aula-card-meta">Entenda a lógica do Caixa Livre</p>
-            </div>
-          </div>
-        </article>
-
-        <!-- Card 03 -->
-        <article class="aula-card" tabindex="0" style="--aula-bg: url('aula-1-opt.jpg')">
-          <div class="aula-card-inner">
-            <div class="aula-card-topline">
-              <span class="aula-card-tag">Etapa 03</span>
-              <span class="aula-card-arrow" aria-hidden="true">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
-              </span>
-            </div>
-            <div class="aula-card-copy">
-              <h3 class="aula-card-title">Conhecendo a ferramenta Caixa Livre</h3>
-              <p class="aula-card-meta">Veja o sistema antes de preencher</p>
-            </div>
-          </div>
-        </article>
-
-        <!-- Card 04 -->
-        <article class="aula-card" tabindex="0" style="--aula-bg: url('aula-1-opt.jpg')">
-          <div class="aula-card-inner">
-            <div class="aula-card-topline">
-              <span class="aula-card-tag">Etapa 04</span>
-              <span class="aula-card-arrow" aria-hidden="true">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
-              </span>
-            </div>
-            <div class="aula-card-copy">
-              <h3 class="aula-card-title">Quais documentos você precisa reunir para começar</h3>
-              <p class="aula-card-meta">Prepare tudo sem travar no início</p>
-            </div>
-          </div>
-        </article>
-
-        <!-- Card 05 -->
-        <article class="aula-card" tabindex="0" style="--aula-bg: url('aula-1-opt.jpg')">
-          <div class="aula-card-inner">
-            <div class="aula-card-topline">
-              <span class="aula-card-tag">Etapa 05</span>
-              <span class="aula-card-arrow" aria-hidden="true">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
-              </span>
-            </div>
-            <div class="aula-card-copy">
-              <h3 class="aula-card-title">Como preencher a planilha manualmente (ou colando do Excel)</h3>
-              <p class="aula-card-meta">Ganhe autonomia no preenchimento</p>
-            </div>
-          </div>
-        </article>
-
-        <!-- Card 06 -->
-        <article class="aula-card" tabindex="0" style="--aula-bg: url('aula-1-opt.jpg')">
-          <div class="aula-card-inner">
-            <div class="aula-card-topline">
-              <span class="aula-card-tag">Etapa 06</span>
-              <span class="aula-card-arrow" aria-hidden="true">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
-              </span>
-            </div>
-            <div class="aula-card-copy">
-              <h3 class="aula-card-title">Como preencher a planilha com ajuda da IA</h3>
-              <p class="aula-card-meta">Use inteligência artificial para acelerar</p>
-            </div>
-          </div>
-        </article>
-
-        <!-- Card 07 -->
-        <article class="aula-card" tabindex="0" style="--aula-bg: url('aula-1-opt.jpg')">
-          <div class="aula-card-inner">
-            <div class="aula-card-topline">
-              <span class="aula-card-tag">Etapa 07</span>
-              <span class="aula-card-arrow" aria-hidden="true">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
-              </span>
-            </div>
-            <div class="aula-card-copy">
-              <h3 class="aula-card-title">Como montar seu planejamento de gastos manualmente</h3>
-              <p class="aula-card-meta">Transforme números em decisão prática</p>
-            </div>
-          </div>
-        </article>
-
-        <!-- Card 08 -->
-        <article class="aula-card" tabindex="0" style="--aula-bg: url('aula-1-opt.jpg')">
-          <div class="aula-card-inner">
-            <div class="aula-card-topline">
-              <span class="aula-card-tag">Etapa 08</span>
-              <span class="aula-card-arrow" aria-hidden="true">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
-              </span>
-            </div>
-            <div class="aula-card-copy">
-              <h3 class="aula-card-title">Como definir seu planejamento com ajuda da Inteligência Artificial</h3>
-              <p class="aula-card-meta">Clareza com personalização</p>
-            </div>
-          </div>
-        </article>
-
-        <!-- Card 09 -->
-        <article class="aula-card" tabindex="0" style="--aula-bg: url('aula-1-opt.jpg')">
-          <div class="aula-card-inner">
-            <div class="aula-card-topline">
-              <span class="aula-card-tag">Etapa 09</span>
-              <span class="aula-card-arrow" aria-hidden="true">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
-              </span>
-            </div>
-            <div class="aula-card-copy">
-              <h3 class="aula-card-title">Como interpretar a Análise do Mês</h3>
-              <p class="aula-card-meta">Saia da planilha com leitura estratégica</p>
-            </div>
-          </div>
-        </article>
-
-        <!-- Card 10 -->
-        <article class="aula-card" tabindex="0" style="--aula-bg: url('aula-1-opt.jpg')">
-          <div class="aula-card-inner">
-            <div class="aula-card-topline">
-              <span class="aula-card-tag">Etapa 10</span>
-              <span class="aula-card-arrow" aria-hidden="true">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
-              </span>
-            </div>
-            <div class="aula-card-copy">
-              <h3 class="aula-card-title">Como acompanhar sua evolução ao longo do ano</h3>
-              <p class="aula-card-meta">Construa consistência e visão anual</p>
-            </div>
-          </div>
-        </article>
-
-        <!-- Card 11 -->
-        <article class="aula-card" tabindex="0" style="--aula-bg: url('aula-1-opt.jpg')">
-          <div class="aula-card-inner">
-            <div class="aula-card-topline">
-              <span class="aula-card-tag">Bônus</span>
-              <span class="aula-card-arrow" aria-hidden="true">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
-              </span>
-            </div>
-            <div class="aula-card-copy">
-              <h3 class="aula-card-title">Como manter uma rotina semanal de gestão financeira</h3>
-              <p class="aula-card-meta">Proteja o método da correria do mês</p>
-            </div>
-          </div>
-        </article>
-
-        <!-- Card 12 -->
-        <article class="aula-card" tabindex="0" style="--aula-bg: url('aula-1-opt.jpg')">
-          <div class="aula-card-inner">
-            <div class="aula-card-topline">
-              <span class="aula-card-tag">Clara</span>
-              <span class="aula-card-arrow" aria-hidden="true">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
-              </span>
-            </div>
-            <div class="aula-card-copy">
-              <h3 class="aula-card-title">Como usar a IA do Caixa Livre - Clara</h3>
-              <p class="aula-card-meta">Aula prática para conversar com a assistente</p>
-            </div>
-          </div>
-        </article>
-      </div>
-
-      <div class="aulas-carousel-actions" aria-label="Controles do carrossel de aulas">
-        <button type="button" class="aulas-carousel-btn" data-aulas-prev aria-label="Ver aulas anteriores">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 18l-6-6 6-6"/></svg>
-        </button>
-        <button type="button" class="aulas-carousel-btn" data-aulas-next aria-label="Ver próximas aulas">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 18l6-6-6-6"/></svg>
-        </button>
-      </div>
-    </div>
-  </section>
-
-  <div class="section-divider"></div>
-
-  <!-- ========================================
-       BLOCO 12: OFERTA + PREÇO
+       BLOCO 08: OFERTA + PREÇO
        ======================================== -->
   <section class="oferta" id="preco">
 
@@ -5500,7 +4901,7 @@
           <p class="preco-avista">ou R$147 à vista</p>
         </div>
 
-        <a href="https://pay.voompcreators.com.br/14331/offer/KYti4b/?ch_id=2705" target="_blank" rel="noopener" class="btn-principal" style="width: 100%; justify-content: center;">
+        <a href="https://chk.eduzz.com/Q9NDB62101" target="_blank" rel="noopener" class="btn-principal" style="width: 100%; justify-content: center;">
           Quero ter acesso agora
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
         </a>
@@ -5511,24 +4912,7 @@
   </section>
 
   <!-- ========================================
-       BLOCO 13: SUPORTE
-       ======================================== -->
-  <section class="suporte">
-    <div class="container-narrow">
-      <div class="suporte-shell scroll-reveal">
-        <img src="foto whatsapp.webp" loading="lazy" alt="Jeane — Suporte Caixa Livre" class="suporte-avatar">
-        <p>Ficou com qualquer dúvida, mesmo que pareça boba? Chama a gente no WhatsApp. <strong>A Jeane vai te ajudar!</strong></p>
-
-        <a href="https://wa.me/556199245689?text=Vim%20da%20p%C3%A1gina%20e%20quero%20saber%20mais%20sobre%20o%20Caixa%20Livre" class="btn-whatsapp" target="_blank" rel="noopener">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.948 11.948 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.37 0-4.567-.694-6.42-1.888l-.448-.289-3.236 1.085 1.085-3.236-.29-.448A9.953 9.953 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-          Falar com a Jeane
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========================================
-       BLOCO 14: GARANTIA
+       BLOCO 09: GARANTIA + FAQ
        ======================================== -->
   <section class="garantia">
 
@@ -5552,11 +4936,7 @@
     </div>
   </section>
 
-  <div class="section-divider"></div>
-
-  <!-- ========================================
-       BLOCO 15: FAQ
-       ======================================== -->
+  <!-- FAQ flui direto da Garantia (mesmo bloco visual) -->
   <section class="faq" id="faq">
 
     <div class="sparkle" style="top: 6%; left: 8%; width: 55px; height: 55px;">
@@ -5613,7 +4993,7 @@
   <div class="section-divider"></div>
 
   <!-- ========================================
-       BLOCO 16: CTA FINAL
+       BLOCO 10: CTA FINAL
        ======================================== -->
   <section class="cta-final">
 
@@ -5633,7 +5013,7 @@
         <p class="cta-preco">R$14<small>,70</small></p>
         <p class="cta-avista">ou R$147 à vista</p>
 
-        <a href="https://pay.voompcreators.com.br/14331/offer/KYti4b/?ch_id=2705" target="_blank" rel="noopener" class="btn-principal" style="width: 100%; justify-content: center;">
+        <a href="https://chk.eduzz.com/Q9NDB62101" target="_blank" rel="noopener" class="btn-principal" style="width: 100%; justify-content: center;">
           Quero me organizar agora
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
         </a>
@@ -5654,194 +5034,6 @@
 
 
   <script>
-    (function initJourneyProgress() {
-      const journeyTimeline = document.querySelector('.jornada-timeline');
-      if (!journeyTimeline) return;
-
-      const journeySteps = Array.from(journeyTimeline.querySelectorAll('.jornada-step'));
-
-      let ticking = false;
-
-      function clamp(value, min, max) {
-        return Math.max(min, Math.min(max, value));
-      }
-
-      function updateJourneyProgress() {
-        const rect = journeyTimeline.getBoundingClientRect();
-        const viewportHeight = window.innerHeight || document.documentElement.clientHeight || 1;
-        const completionPoint = viewportHeight * 0.5;
-        const railHeight = Math.max(journeyTimeline.offsetHeight - 18, 1);
-        const completedPixels = clamp(completionPoint - rect.top, 0, railHeight);
-        const progress = clamp(completedPixels / railHeight, 0, 1);
-
-        journeyTimeline.style.setProperty('--journey-progress', progress.toFixed(4));
-
-        journeySteps.forEach(step => {
-          const stepNode = step.querySelector('.jornada-node');
-          if (!stepNode) return;
-
-          const stepNodeCenter = step.offsetTop + (stepNode.offsetTop || 0) + (stepNode.offsetHeight / 2);
-          let completionThreshold = stepNodeCenter;
-
-          if (step.classList.contains('jornada-step-final')) {
-            const finalBox = step.querySelector('.jornada-chegada-box');
-            const earlyCompletionOffset = Math.min(viewportHeight * 0.1, 120);
-
-            if (finalBox) {
-              completionThreshold = step.offsetTop + finalBox.offsetTop + (finalBox.offsetHeight * 0.5) - earlyCompletionOffset;
-            } else {
-              completionThreshold = stepNodeCenter - earlyCompletionOffset;
-            }
-          }
-
-          step.classList.toggle('is-complete', completedPixels >= completionThreshold);
-        });
-
-        ticking = false;
-      }
-
-      function requestJourneyProgressUpdate() {
-        if (ticking) return;
-        ticking = true;
-        window.requestAnimationFrame(updateJourneyProgress);
-      }
-
-      updateJourneyProgress();
-      window.addEventListener('scroll', requestJourneyProgressUpdate, { passive: true });
-      window.addEventListener('resize', requestJourneyProgressUpdate);
-    })();
-
-    (function initJourneyCards() {
-      const journeyCards = Array.from(document.querySelectorAll('[data-journey-card]'));
-      if (!journeyCards.length) return;
-
-      function syncPressedState(activeCard) {
-        journeyCards.forEach(card => {
-          const isActive = card === activeCard;
-          const journeyStep = card.closest('.jornada-step');
-
-          card.classList.toggle('is-selected', isActive);
-          card.setAttribute('aria-pressed', String(isActive));
-
-          if (journeyStep) {
-            journeyStep.classList.toggle('is-active', isActive);
-          }
-        });
-      }
-
-      journeyCards.forEach(card => {
-        card.addEventListener('click', () => {
-          const shouldDeactivate = card.classList.contains('is-selected');
-          syncPressedState(shouldDeactivate ? null : card);
-        });
-
-        card.addEventListener('keydown', event => {
-          if (event.key !== 'Enter' && event.key !== ' ') return;
-          event.preventDefault();
-          card.click();
-        });
-      });
-
-      syncPressedState(journeyCards[0]);
-    })();
-
-    (function initAulasCarousel() {
-      const aulasTrack = document.querySelector('[data-aulas-track]');
-      const prevButton = document.querySelector('[data-aulas-prev]');
-      const nextButton = document.querySelector('[data-aulas-next]');
-      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      const autoAdvanceMs = 3400;
-      const resumeDelayMs = 6500;
-
-      if (!aulasTrack || !prevButton || !nextButton) return;
-
-      let autoAdvanceTimer = null;
-      let resumeTimer = null;
-
-      function getScrollStep() {
-        const firstCard = aulasTrack.querySelector('.aula-card');
-        if (!firstCard) return aulasTrack.clientWidth * 0.88;
-
-        const trackStyles = window.getComputedStyle(aulasTrack);
-        const gap = parseFloat(trackStyles.columnGap || trackStyles.gap || '0') || 0;
-        return firstCard.getBoundingClientRect().width + gap;
-      }
-
-      function syncCarouselButtons() {
-        const maxScrollLeft = Math.max(aulasTrack.scrollWidth - aulasTrack.clientWidth - 2, 0);
-        const isAtStart = aulasTrack.scrollLeft <= 2;
-        const isAtEnd = aulasTrack.scrollLeft >= maxScrollLeft;
-
-        prevButton.disabled = isAtStart;
-        nextButton.disabled = isAtEnd;
-        prevButton.style.opacity = isAtStart ? '0.45' : '1';
-        nextButton.style.opacity = isAtEnd ? '0.45' : '1';
-        prevButton.style.cursor = isAtStart ? 'default' : 'pointer';
-        nextButton.style.cursor = isAtEnd ? 'default' : 'pointer';
-      }
-
-      function stopAutoAdvance() {
-        if (autoAdvanceTimer) {
-          window.clearInterval(autoAdvanceTimer);
-          autoAdvanceTimer = null;
-        }
-
-        if (resumeTimer) {
-          window.clearTimeout(resumeTimer);
-          resumeTimer = null;
-        }
-      }
-
-      function startAutoAdvance() {
-        if (reduceMotion || autoAdvanceTimer) return;
-
-        autoAdvanceTimer = window.setInterval(() => {
-          const maxScrollLeft = Math.max(aulasTrack.scrollWidth - aulasTrack.clientWidth - 2, 0);
-          const isAtEnd = aulasTrack.scrollLeft >= maxScrollLeft;
-
-          aulasTrack.scrollTo({
-            left: isAtEnd ? 0 : Math.min(aulasTrack.scrollLeft + getScrollStep(), maxScrollLeft),
-            behavior: 'smooth'
-          });
-        }, autoAdvanceMs);
-      }
-
-      function scheduleAutoAdvanceResume() {
-        stopAutoAdvance();
-        if (reduceMotion) return;
-        resumeTimer = window.setTimeout(startAutoAdvance, resumeDelayMs);
-      }
-
-      prevButton.addEventListener('click', () => {
-        scheduleAutoAdvanceResume();
-        aulasTrack.scrollBy({ left: -getScrollStep(), behavior: 'smooth' });
-      });
-
-      nextButton.addEventListener('click', () => {
-        scheduleAutoAdvanceResume();
-        aulasTrack.scrollBy({ left: getScrollStep(), behavior: 'smooth' });
-      });
-
-      aulasTrack.addEventListener('scroll', () => {
-        window.requestAnimationFrame(syncCarouselButtons);
-      }, { passive: true });
-
-      aulasTrack.addEventListener('pointerdown', stopAutoAdvance);
-      aulasTrack.addEventListener('touchstart', stopAutoAdvance, { passive: true });
-      aulasTrack.addEventListener('touchend', scheduleAutoAdvanceResume, { passive: true });
-      aulasTrack.addEventListener('mouseenter', stopAutoAdvance);
-      aulasTrack.addEventListener('mouseleave', startAutoAdvance);
-      aulasTrack.addEventListener('focusin', stopAutoAdvance);
-      aulasTrack.addEventListener('focusout', scheduleAutoAdvanceResume);
-
-      window.addEventListener('resize', () => {
-        syncCarouselButtons();
-        scheduleAutoAdvanceResume();
-      });
-
-      syncCarouselButtons();
-      startAutoAdvance();
-    })();
 
     (function initScrollMotion() {
       const revealTargets = document.querySelectorAll('.scroll-reveal');
@@ -6026,7 +5218,7 @@
   </footer>
 
   <script>
-    // Repassa UTMs para links de checkout (Voomp)
+    // Repassa UTMs para links de checkout (Eduzz)
     (function(){
       var params = new URLSearchParams(window.location.search);
       var utms = ['utm_source','utm_medium','utm_campaign','utm_term','utm_content','src'];
@@ -6036,7 +5228,7 @@
         if(val) query += (query ? '&' : '?') + key + '=' + encodeURIComponent(val);
       });
       if(!query) return;
-      document.querySelectorAll('a[href*="pay.voompcreators.com.br"]').forEach(function(a){
+      document.querySelectorAll('a[href*="chk.eduzz.com"]').forEach(function(a){
         a.href = a.href + (a.href.indexOf('?') > -1 ? '&' : '?') + query.substring(1);
       });
     })();
